@@ -10,7 +10,6 @@ import SwiftUI
 struct HomeView: View {
     @EnvironmentObject var network: NetworkManager
     @StateObject var viewModel = HomeViewModel()
-    @State private var searchValue:String = ""
     @Namespace var namesapce
     var body: some View {
         VStack {
@@ -27,8 +26,7 @@ struct HomeView: View {
                         NavigationStack{
                             ScrollView (showsIndicators: false){
                                 LazyVStack(alignment:.leading,spacing: 20){
-                                    searchWidget(searchText: $searchValue)
-                                        .padding(.horizontal)
+                                    
                                     Text("What do you want to watch?")
                                         .poppins(.bold, 20)
                                     
