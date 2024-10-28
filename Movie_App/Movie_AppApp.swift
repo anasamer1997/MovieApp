@@ -9,9 +9,25 @@ import SwiftUI
 
 @main
 struct Movie_AppApp: App {
+    @Environment(\.scenePhase) var scenePhase
+    @StateObject private var networkManager = NetworkManager.shared
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomeView()
+                .environmentObject(networkManager)
+        }
+        .onChange(of: scenePhase) {
+            switch scenePhase {
+            case .background:
+                scheduleAppRefresh()
+                
+            default: break
+            }
+        }
+        .backgroundTask(.appRefresh("myapprefresh2")) {
+            print("backgroundTask")
+            await HomeViewModel.shared.fetchTrendingMovies()
+            await HomeViewModel.shared.fetchTopRatedMovies()
         }
     }
 }
