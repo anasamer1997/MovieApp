@@ -25,7 +25,7 @@ struct HomeView: View {
                         
                         NavigationStack{
                             ScrollView (showsIndicators: false){
-                                LazyVStack(alignment:.leading,spacing: 20){
+                                LazyVStack(alignment:.leading,spacing: 10){
                                     
                                     Text("What do you want to watch?")
                                         .poppins(.bold, 20)

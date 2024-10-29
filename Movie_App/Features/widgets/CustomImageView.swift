@@ -24,13 +24,14 @@ struct CustomImageView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 20))
           
         } placeholder: {
-            ZStack{
-                Color.appGrayColor1
-                Text(movie.title)
-                    .poppins(.light)
-                    .padding()
-            }
-            .frame(width: itemWidth)
+            ProgressView()
+//            Image(systemName: "photo.fill")
+//            ZStack{
+//                Color.appGrayColor1
+//                Text(movie.title)
+//                    .poppins(.light)
+//                    .padding()
+//            }
         }
         .frame(width: itemWidth,height: itemHeight)
         .clipShape(RoundedRectangle(cornerRadius: 20))

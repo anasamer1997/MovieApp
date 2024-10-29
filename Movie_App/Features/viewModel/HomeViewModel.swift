@@ -60,10 +60,10 @@ class HomeViewModel : ObservableObject{
                     self.moviesSelectedGenre = newList
                 }
 
-//                if let topRatedMovies: [MovieModel] = await CoreDataStorageService.shared.loadMoviesFromLocalStorage(.topRated),!topRatedMovies.isEmpty {
-//                    print("Loaded \(topRatedMovies.count) top-rated movies.")
-//                    self.topRatedMovies = topRatedMovies
-//                }
+                if let topRatedMovies: [MovieModel] = await CoreDataStorageService.shared.loadMoviesFromLocalStorage(.topRated),!topRatedMovies.isEmpty {
+                    print("Loaded \(topRatedMovies.count) top-rated movies.")
+                    self.topRatedMovies = topRatedMovies
+                }
 
                
             }
