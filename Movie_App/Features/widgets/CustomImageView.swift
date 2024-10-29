@@ -24,7 +24,10 @@ struct CustomImageView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 20))
           
         } placeholder: {
-            ProgressView()
+            ZStack{
+                Color.appGrayColor1
+                
+            }
         }
         .frame(width: itemWidth,height: itemHeight)
         .clipShape(RoundedRectangle(cornerRadius: 20))

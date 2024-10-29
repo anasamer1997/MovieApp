@@ -11,6 +11,12 @@ import SwiftUI
 struct Movie_AppApp: App {
     @Environment(\.scenePhase) var scenePhase
     @StateObject private var networkManager = NetworkManager.shared
+    @State private var topRatedMoviesVM = TopViewModel()
+    @State private var trendingMoviesVM = TrendingViewModel()
+    
+    init(){
+        
+    }
     var body: some Scene {
         WindowGroup {
             HomeView()
@@ -18,6 +24,8 @@ struct Movie_AppApp: App {
         }
         .onChange(of: scenePhase) {
             switch scenePhase {
+            case .active:
+                LaunchManager.shared.isFirstLaunch()
             case .background:
                 scheduleAppRefresh()
                 
@@ -26,8 +34,8 @@ struct Movie_AppApp: App {
         }
         .backgroundTask(.appRefresh("myapprefresh2")) {
             print("backgroundTask")
-            await HomeViewModel.shared.fetchTrendingMovies()
-            await HomeViewModel.shared.fetchTopRatedMovies()
+            await topRatedMoviesVM.fetchTopMovies()
+            await trendingMoviesVM.fetchTrendingMovies()
         }
     }
 }
